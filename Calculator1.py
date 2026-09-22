@@ -1,36 +1,56 @@
 import streamlit as st
-from calculator import add, sub, mul, div, mod
+
+"""Calculator core functions.
+
+This module provides simple arithmetic functions that can be used
+from a CLI or imported by a Streamlit app.
+"""
+
+def add(a, b):
+	return a + b
+
+def sub(a, b):
+	return a - b
+
+def mul(a, b):
+	return a * b
+
+def div(a, b):
+	if b == 0:
+		raise ZeroDivisionError("division by zero")
+	return a / b
+
+def mod(a, b):
+	if b == 0:
+		raise ZeroDivisionError("modulo by zero")
+	return a % b
 
 
-st.set_page_config(page_title="Simple Calculator", layout="centered")
+def _streamlit_app():
+	st.title("Simple Calculator")
 
-st.title("Simple Calculator")
+	a = st.number_input("Enter value of a:", value=0.0, format="%.2f")
+	b = st.number_input("Enter value of b:", value=0.0, format="%.2f")
 
-st.write("A minimal calculator built with Streamlit. Enter two numbers and choose an operation.")
+	st.write("===============")
+	st.write("**Results:**")
 
-col1, col2 = st.columns(2)
-with col1:
-    a = st.number_input("Value A", value=0.0, format="%f")
-with col2:
-    b = st.number_input("Value B", value=0.0, format="%f")
+	if st.button("Calculate"):
+		st.write(f"Addition: {add(a, b)}")
+		st.write(f"Multiplication: {mul(a, b)}")
+		st.write(f"Subtraction: {sub(a, b)}")
 
-op = st.selectbox("Operation", ["add", "sub", "mul", "div", "mod"])
+		try:
+			st.write(f"Division: {div(a, b)}")
+		except ZeroDivisionError:
+			st.error("Division Error: Cannot divide by zero!")
 
-if st.button("Compute"):
-    try:
-        if op == "add":
-            result = add(a, b)
-        elif op == "sub":
-            result = sub(a, b)
-        elif op == "mul":
-            result = mul(a, b)
-        elif op == "div":
-            result = div(a, b)
-        elif op == "mod":
-            result = mod(a, b)
-        st.success(f"Result: {result}")
-    except Exception as e:
-        st.error(f"Error: {e}")
+		try:
+			st.write(f"Modulo: {mod(a, b)}")
+		except ZeroDivisionError:
+			st.error("Modulo Error: Cannot perform modulo by zero!")
+	st.write("===============")
 
-st.markdown("---")
-st.write("To host: install `streamlit` and run `streamlit run streamlit_app.py`.")
+
+if __name__ == "__main__":
+	_streamlit_app()
