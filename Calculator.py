@@ -1,93 +1,48 @@
-{
-  "nbformat": 4,
-  "nbformat_minor": 0,
-  "metadata": {
-    "colab": {
-      "provenance": [],
-      "authorship_tag": "ABX9TyOGt8zlSPkgHDKtlXjFSFF7",
-      "include_colab_link": true
-    },
-    "kernelspec": {
-      "name": "python3",
-      "display_name": "Python 3"
-    },
-    "language_info": {
-      "name": "python"
-    }
-  },
-  "cells": [
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "view-in-github",
-        "colab_type": "text"
-      },
-      "source": [
-        "<a href=\"https://colab.research.google.com/github/Arnabapun/Python-SRU/blob/main/Calculator.py\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "execution_count": null,
-      "metadata": {
-        "id": "elpM4agU4IJW"
-      },
-      "outputs": [],
-      "source": [
-        "\"\"\"Calculator core functions.\n",
-        "\n",
-        "This module provides simple arithmetic functions that can be used\n",
-        "from a CLI or imported by a Streamlit app.\n",
-        "\"\"\"\n",
-        "\n",
-        "def add(a, b):\n",
-        "\treturn a + b\n",
-        "\n",
-        "def sub(a, b):\n",
-        "\treturn a - b\n",
-        "\n",
-        "def mul(a, b):\n",
-        "\treturn a * b\n",
-        "\n",
-        "def div(a, b):\n",
-        "\tif b == 0:\n",
-        "\t\traise ZeroDivisionError(\"division by zero\")\n",
-        "\treturn a / b\n",
-        "\n",
-        "def mod(a, b):\n",
-        "\tif b == 0:\n",
-        "\t\traise ZeroDivisionError(\"modulo by zero\")\n",
-        "\treturn a % b\n",
-        "\n",
-        "\n",
-        "def _cli():\n",
-        "\ttry:\n",
-        "\t\ta = float(input(\"enter value of a: \"))\n",
-        "\t\tb = float(input(\"enter value of b: \"))\n",
-        "\texcept ValueError:\n",
-        "\t\tprint(\"Invalid input — please enter numbers.\")\n",
-        "\t\treturn\n",
-        "\n",
-        "\tprint(\"===============\")\n",
-        "\tprint(\"sample calculator\")\n",
-        "\tprint(\"===============\")\n",
-        "\tprint(\"addition=\", add(a, b))\n",
-        "\tprint(\"multiplication=\", mul(a, b))\n",
-        "\tprint(\"sub=\", sub(a, b))\n",
-        "\ttry:\n",
-        "\t\tprint(\"div=\", div(a, b))\n",
-        "\texcept ZeroDivisionError:\n",
-        "\t\tprint(\"div= Error (division by zero)\")\n",
-        "\ttry:\n",
-        "\t\tprint(\"Rem=\", mod(a, b))\n",
-        "\texcept ZeroDivisionError:\n",
-        "\t\tprint(\"Rem= Error (modulo by zero)\")\n",
-        "\tprint(\"===============\")\n",
-        "\n",
-        "\n",
-        "if __name__ == \"__main__\":\n",
-        "\t_cli()\n"
-      ]
-    }
-  ]
-}
+
+def add(a, b):
+	return a + b
+
+def sub(a, b):
+	return a - b
+
+def mul(a, b):
+	return a * b
+
+def div(a, b):
+	if b == 0:
+		raise ZeroDivisionError("division by zero")
+	return a / b
+
+def mod(a, b):
+	if b == 0:
+		raise ZeroDivisionError("modulo by zero")
+	return a % b
+
+
+def _cli():
+	try:
+		a = float(input("enter value of a: "))
+		b = float(input("enter value of b: "))
+	except ValueError:
+		print("Invalid input — please enter numbers.")
+		return
+
+	print("===============")
+	print("sample calculator")
+	print("===============")
+	print("addition=", add(a, b))
+	print("multiplication=", mul(a, b))
+	print("sub=", sub(a, b))
+	try:
+		print("div=", div(a, b))
+	except ZeroDivisionError:
+		print("div= Error (division by zero)")
+	try:
+		print("Rem=", mod(a, b))
+	except ZeroDivisionError:
+		print("Rem= Error (modulo by zero)")
+	print("===============")
+
+
+if __name__ == "__main__":
+	_cli()
