@@ -1,4 +1,4 @@
-streamlit_app_content = """
+
 import streamlit as st
 import math
 
@@ -62,7 +62,6 @@ def _streamlit_app():
 
 if __name__ == "__main__":
     _streamlit_app()
-"""
 
 # Save the content of the Streamlit cell to a Python file
 with open('calculator_app.py', 'w') as f:
